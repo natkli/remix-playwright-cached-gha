@@ -20,6 +20,7 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
+          path: ~/.npm
           key: node-modules-${{ hashFiles('package-lock.json') }}
 
       - name: Install dependencies
