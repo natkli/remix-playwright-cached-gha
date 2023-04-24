@@ -43,7 +43,6 @@ jobs:
           key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
 
       - name: Setup Playwright
-        if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
 
       - name: Run Tests
