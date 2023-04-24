@@ -5,8 +5,7 @@ on:
   pull_request:
     branches: [main, master]
 jobs:
-  test:
-    timeout-minutes: 60
+  install:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,6 +30,11 @@ jobs:
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
 
+  e2e-test:
+    needs: ['install']
+    timeout-minutes: 2
+    runs-on: ubuntu-latest
+    steps:
       - name: Get installed Playwright version
         id: playwright-version
         run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
@@ -55,4 +59,4 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report/
-          retention-days: 30
+          retention-days: 7
