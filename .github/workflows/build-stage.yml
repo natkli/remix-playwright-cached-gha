@@ -45,7 +45,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Tests
-        run: npm run test:ci
+        run: npm run e2e-test
 
       - name: Store Artifacts from Failed Tests
         if: failure()
