@@ -1,7 +1,7 @@
 import type { V2_MetaFunction } from '@remix-run/node';
 
 export const meta: V2_MetaFunction = () => {
-  return [{ title: 'Saksbehandling' }];
+  return [{ title: 'Remix-playwright-github-action' }];
 };
 
 export default function Index() {
